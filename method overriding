@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+
+class Counter {
+   
+    void calculateBill(double price, int quantity) {
+        double total = price * quantity;
+        System.out.println("Total bill: $" + total);
+    }
+}
+
+
+class DiscountCounter extends Counter {
+   
+    @Override
+    void calculateBill(double price, int quantity) {
+        double total = price * quantity;
+        double discount = 0.10 * total; // 10% discount
+        double finalAmount = total - discount;
+        System.out.println("Total bill before discount: $" + total);
+        System.out.println("Discount: $" + discount);
+        System.out.println("Final bill after 10% discount: $" + finalAmount);
+    }
+}
+
+
+public class CounterBillInput {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+     
+        System.out.print("Enter price of item: ");
+        double price = sc.nextDouble();
+
+        System.out.print("Enter quantity of items: ");
+        int quantity = sc.nextInt();
+
+        System.out.print("Do you have a discount? (yes/no): ");
+        sc.nextLine(); 
+        String answer = sc.nextLine();
+
+        Counter counter;
+
+        
+        if (answer.equalsIgnoreCase("yes")) {
+            counter = new DiscountCounter();
+        } else {
+            counter = new Counter();
+        }
+
+       
+        counter.calculateBill(price, quantity);
+
+        sc.close();
+    }
+}
