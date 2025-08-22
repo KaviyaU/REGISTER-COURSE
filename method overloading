@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+class TicketBooking {
+  
+    void bookTicket(String name) {
+        System.out.println(name + " booked 1 ticket.");
+    }
+
+   
+    void bookTicket(String name, int noOfTickets) {
+        System.out.println(name + " booked " + noOfTickets + " tickets.");
+    }
+
+    
+    void bookTicket(String name, int noOfTickets, String seatType) {
+        System.out.println(name + " booked " + noOfTickets + " tickets. Seat type: " + seatType);
+    }
+}
+
+public class BookingWithInput {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        TicketBooking booking = new TicketBooking();
+
+      
+        System.out.print("Enter your name: ");
+        String name = sc.nextLine();
+
+       
+        System.out.print("Enter number of tickets: ");
+        int noOfTickets = sc.nextInt();
+        sc.nextLine(); 
+
+        
+        System.out.print("Enter seat type (or leave blank for default): ");
+        String seatType = sc.nextLine();
+
+        
+        if (noOfTickets == 1 && seatType.isEmpty()) {
+            booking.bookTicket(name);
+        } else if (!seatType.isEmpty()) {
+            booking.bookTicket(name, noOfTickets, seatType);
+        } else {
+            booking.bookTicket(name, noOfTickets);
+        }
+
+        sc.close();
+    }
+}
