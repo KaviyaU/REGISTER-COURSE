@@ -1,0 +1,29 @@
+class Person {
+    public String name = "Kaviya";       // public 
+    private int age = 20;                // private 
+    protected String city = "Chennai";   // protected 
+    String country = "India";            // default 
+
+   
+    public int getAge() {
+        return age;
+    }
+}
+
+public class AccessSpecifierExample {
+    public static void main(String[] args) {
+        Person p1 = new Person();
+
+        
+        System.out.println("Name: " + p1.name);
+
+        
+        System.out.println("Age: " + p1.getAge());
+
+        
+        System.out.println("City: " + p1.city);
+
+       
+        System.out.println("Country: " + p1.country);
+    }
+}
