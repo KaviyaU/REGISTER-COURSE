@@ -1,0 +1,97 @@
+import java.util.Scanner;
+abstract class User {
+    String name;
+    String id;
+
+    User(String name, String id) {
+        this.name = name;
+        this.id = id;
+    }
+    abstract void showDetails();
+}
+class Student extends User {
+    String department;
+
+    Student(String name, String id, String department) {
+        super(name, id);
+        this.department = department;
+    }
+
+    @Override
+    void showDetails() {
+        System.out.println("Student Name: " + name + ", ID: " + id + ", Department: " + department);
+    }
+
+    void registerCourse(Course course) {
+        System.out.println(name + " registered for course: " + course.courseName);
+    }
+}
+class Admin extends User {
+    Admin(String name, String id) {
+        super(name, id);
+    }
+
+    @Override
+    void showDetails() {
+        System.out.println("Admin Name: " + name + ", ID: " + id);
+    }
+
+    void addCourse(Course course) {
+        System.out.println("Admin " + name + " added course: " + course.courseName);
+    }
+}
+class Course {
+    String courseId;
+    String courseName;
+
+    Course(String courseId, String courseName) {
+        this.courseId = courseId;
+        this.courseName = courseName;
+    }
+
+    void showCourse() {
+        System.out.println("Course ID: " + courseId + ", Course Name: " + courseName);
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+    
+        System.out.print("Enter Course ID: ");
+        String courseId = sc.nextLine();
+        System.out.print("Enter Course Name: ");
+        String courseName = sc.nextLine();
+        Course course = new Course(courseId, courseName);
+
+        
+        System.out.print("Enter Student Name: ");
+        String studentName = sc.nextLine();
+        System.out.print("Enter Student ID: ");
+        String studentId = sc.nextLine();
+        System.out.print("Enter Department: ");
+        String department = sc.nextLine();
+        Student student = new Student(studentName, studentId, department);
+
+     
+        System.out.print("Enter Admin Name: ");
+        String adminName = sc.nextLine();
+        System.out.print("Enter Admin ID: ");
+        String adminId = sc.nextLine();
+        Admin admin = new Admin(adminName, adminId);
+
+        System.out.println("\n--- User Details ---");
+        student.showDetails();  
+        admin.showDetails();   
+
+       
+        student.registerCourse(course);
+        admin.addCourse(course);
+
+       
+        System.out.println("\n--- Course Details ---");
+        course.showCourse();
+
+        sc.close();
+    }
+}
