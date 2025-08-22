@@ -1,0 +1,69 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Student {
+	private String name;
+    private int rollNo;
+    private List<String> courses;
+
+    public Student(String name, int rollNo) {
+        this.name = name;
+        this.rollNo = rollNo;
+        this.courses = new ArrayList<>();
+    }
+
+    public void registerCourse(String course) {
+        courses.add(course);
+    }
+
+    public void viewCourses() {
+        System.out.println("\n--- Student Details ---");
+        System.out.println("Name    : " + name);
+        System.out.println("Roll No : " + rollNo);
+
+        if (courses.isEmpty()) {
+            System.out.println("No courses registered.");
+        } else {
+            System.out.println("Registered Courses:");
+            for (String course : courses) {
+                System.out.println("- " + course);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        List<Student> students = new ArrayList<>();
+
+        System.out.print("Enter number of students: ");
+        int n = Integer.parseInt(sc.nextLine().trim());
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nEnter details for Student " + (i + 1));
+            System.out.print("Enter Name: ");
+            String name = sc.nextLine();
+
+            System.out.print("Enter Roll No: ");
+            int rollNo = Integer.parseInt(sc.nextLine().trim());
+
+            Student s = new Student(name, rollNo);
+
+            System.out.print("Enter number of courses to register: ");
+            int c = Integer.parseInt(sc.nextLine().trim());
+            for (int j = 0; j < c; j++) {
+                System.out.print("Enter course " + (j + 1) + ": ");
+                s.registerCourse(sc.nextLine());
+            }
+
+            students.add(s);
+        }
+
+        System.out.println("\n===== All Student Details =====");
+        for (Student s : students) {
+            s.viewCourses();
+        }
+
+        sc.close();
+    }
+}
