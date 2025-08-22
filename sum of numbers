@@ -1,0 +1,21 @@
+public class sumnumbers {
+	public static int findsum(int start,int end)
+	{
+		int sum=0;
+		for(int i =start;i<=end;i++)
+		{
+			sum+=i;
+		}
+		return sum;
+	}
+	public static void main(String[]args)
+	{
+		System.out.println("TC1:Sum from 1 to 100 :"+findsum(1,100));
+		System.out.println("TC2:Sum from 1 to 50 :"+findsum(1,100));
+		System.out.println("TC3:Sum from 1 to 10 :"+findsum(1,100));
+		System.out.println("TC4:Sum from 50 to 100 :"+findsum(1,100));
+		System.out.println("TC5:Sum from 1 to 1 :"+findsum(1,100));
+
+	}
+
+}
